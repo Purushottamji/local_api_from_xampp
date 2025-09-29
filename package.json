@@ -1,0 +1,26 @@
+{
+  "name": "local_api_from_xampp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node merge_api_with_database"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Purushottamji/local_api_from_xampp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Purushottamji/local_api_from_xampp/issues"
+  },
+  "homepage": "https://github.com/Purushottamji/local_api_from_xampp#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.15.1"
+  }
+}
