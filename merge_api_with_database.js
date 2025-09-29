@@ -41,6 +41,20 @@ app.patch("/patch_user/:id",(userRequest,userResponse)=>{
     })
 })
 
+app.put("/put_user/:id",(userRequest,userResponse)=>{
+    const mysqlPut="UPDATE student SET name=?, email=?, mobile=? WHERE id = ?";
+    const selectById="SELECT * FROM student WHERE id = ?";
+    const {name,email,mobile}=userRequest.body;
+    const id=userRequest.params.id;
+    db.query(mysqlPut,[name, email, mobile, id],(error,result)=>{
+        if(error) return userResponse.status(500).json({"message":"server error","data":[]});
+        if(result.affectedRows===0) return userResponse.status(404).json({"message":"user not found","data":[]});
+        db.query(selectById,[id],(fetchError,rows)=>{
+            if(fetchError) return userResponse.status(500).json({"message":"server error","data":[]});
+            userResponse.status(200).json({"message":"user data updated","data":rows[0]});
+        })
+    })
+})
 app.listen(5213,(error)=>{
     if(error) return console.log("error:-" + error.message);
     console.log("Purushottam Kumar");
